@@ -1,0 +1,27 @@
+import cv2
+import matplotlib.pyplot as plt
+import numpy as np
+# Sample detected waste types (usually from ML model)
+detected_waste = ['plastic', 'metal', 'organic', 'plastic', 'glass', 'organic', 'plastic', 'metal']
+
+# Count each type
+waste_counts = {}
+for item in detected_waste:
+    if item in waste_counts:
+        waste_counts[item] += 1
+    else:
+        waste_counts[item] = 1
+# Bar Chart
+plt.figure(figsize=(8, 5))
+plt.bar(waste_counts.keys(), waste_counts.values(), color=['blue', 'grey', 'green', 'orange'])
+plt.title('Waste Type Distribution')
+plt.xlabel('Waste Type')
+plt.ylabel('Count')
+plt.grid(True)
+plt.show()
+# Pie Chart
+plt.figure(figsize=(6,6))
+plt.pie(waste_counts.values(), labels=waste_counts.keys(), autopct='%1.1f%%', startangle=140)
+plt.title('Waste Type Distribution')
+plt.axis('equal')
+plt.show()
